@@ -23,4 +23,10 @@ def view():
     rows = cur.fetchall()
     db.close()
     return rows
+def delete(item):
+    db = sqlite3.connect('inventory.db')
+    cur = db.cursor()
+    cur.execute("DELETE FROM store WHERE item=?",(item,))
+    db.commit()
+    db.close()
 print(view())
