@@ -15,3 +15,12 @@ def insert(item,qty,price):
     cur.execute("INSERT INTO store VALUES(?,?,?)",(item,qty,price))
     db.commit()
     db.close()
+
+def view():
+    db = sqlite3.connect('inventory.db')
+    cur = db.cursor()
+    cur.execute('SELECT * FROM store')
+    rows = cur.fetchall()
+    db.close()
+    return rows
+print(view())
