@@ -29,4 +29,10 @@ def delete(item):
     cur.execute("DELETE FROM store WHERE item=?",(item,))
     db.commit()
     db.close()
+def update(item,qty,price):
+    db = sqlite3.connect('inventory.db')
+    cur = db.cursor()
+    cur.execute("UPDATE store WHERE item=? SET quantity=?,price=?",(item,qty,price))
+    db.commit()
+    db.close()
 print(view())
