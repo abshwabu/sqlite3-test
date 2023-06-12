@@ -32,7 +32,11 @@ def delete(item):
 def update(item,qty,price):
     db = sqlite3.connect('inventory.db')
     cur = db.cursor()
-    cur.execute("UPDATE store WHERE item=? SET quantity=?,price=?",(item,qty,price))
+    cur.execute("UPDATE store SET quantity=?,price=?  WHERE item=?",(qty,price,item))
     db.commit()
     db.close()
+
+
+delete('coffe')
+
 print(view())
